@@ -11,10 +11,7 @@ var answerList4 = document.getElementById('answer4')
 
 
 var answersDiv = document.querySelectorAll('.answers');
-
 console.log(answersDiv)
-
-
 function showQuestions(question) {
 
     function styleDisplay() {
@@ -34,12 +31,7 @@ function showQuestions(question) {
         answerList4.textContent = question['answer4']
         questionDiv.append(questionTitle,answerList1,answerList2,answerList3,answerList4)
        
-    // questionTitle.textContent = 'What HTML stands for?'
-    // questionTitle.setAttribute('style','display:flex; justify-content:center;font-size: 120%;')
-    // questionDiv.setAttribute('style','background-color:green;height: 200px;')
-    // questionDiv.appendChild(questionTitle)
     }
-
     styleDisplay()
 
 }
@@ -56,6 +48,7 @@ var quesTionsObj = {
 
 var question1correct = quesTionsObj.answer1
 
+
 console.log(question1correct)
 
 var quesTionsObj2 = {
@@ -66,9 +59,10 @@ var quesTionsObj2 = {
     answer4: 'Elon Musk'
 }  
 
+
 var question2correct = quesTionsObj2.answer4
 
-console.log(question2correct)
+
 
 var quesTionsObj3 = {
     question1: 'How many states does USA have?',
@@ -81,6 +75,12 @@ var quesTionsObj3 = {
 var question3correct = quesTionsObj3.answer2
 
 console.log(question3correct)
+
+
+
+// CHECK IF ANSWER IS CORRECT
+
+
 
 function hideWelcome() {
     divWelcome.setAttribute('style','display:none;')
@@ -97,12 +97,29 @@ function shuffleQuestions() {
 
 var shuffled = shuffleQuestions()
 
+
+function countdown() {
+    var timer = 10;
+    var setTimer = setInterval(() => {
+        timer--;
+        timeCount.textContent = timer;
+        if(timer === 0) {
+            clearInterval(setTimer)
+            timeCount.textContent = 'GAME OVER'
+        }
+
+
+    }, 1000);
+}
+
     
 
 //  console.log(gameStart())
 function startGame() {
     hideWelcome()
     showQuestions(shuffled)
+    countdown()
+
 
 
 }
