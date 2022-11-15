@@ -7,3 +7,28 @@ nav {
 a {
     text-decoration: none;
 }
+.welcome h1 {
+    font-size: 150%;
+
+}
+.welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+}
+
+.welcome button{
+    width: 20%;
+    margin: 4% 0;
+}
+
+.list-choices li {
+    display: flex;
+   justify-content: center;
+   margin: 2%;
+}
+
+.answers {
+    list-style: none;
+}
