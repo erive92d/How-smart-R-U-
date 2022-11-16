@@ -32,3 +32,15 @@ a {
 .answers {
     list-style: none;
 }
+.question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+
+.question button {
+    margin: 2% 0;
+    width: 20%;
+}
