@@ -1,3 +1,9 @@
+
+body {
+    background-color: #6EE6FF;
+}
+
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -6,6 +12,7 @@ nav {
 }
 a {
     text-decoration: none;
+    font-weight: 700;
 }
 .welcome h1 {
     font-size: 150%;
@@ -40,7 +47,10 @@ a {
     display: none;
 }
 
-.question button {
+button {
+    background-color: #6FE8DC;
+    border-radius: 5px;
+    height:40px;
     margin: 2% 0;
     width: 20%;
 }
