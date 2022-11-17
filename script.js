@@ -99,30 +99,29 @@ var questionObj = [{
 
 }
 ]
-var currentQuestion = Math.floor(Math.random() * questionObj.length)
+var currentQuestion = Math.floor(Math.random() * questionObj.length) //USED FOR INDEX
 
 console.log(currentQuestion)
 
 divWelcome.setAttribute('style','border:3px solid black;width: 50%;margin: auto;border-radius:10px;background-color: #69B8F5')
 var timeLeft = 5;
 
-function displayQuestion(question) {
-    
-    
-    divWelcome.textContent = question[currentQuestion].question;
-    answerId1.textContent = question[currentQuestion].choice1;
-    answerId2.textContent = question[currentQuestion].choice2;
-    answerId3.textContent = question[currentQuestion].choice3;
-    answerId4.textContent = question[currentQuestion].choice4;
+function displayQuestion(question) { //THIRD
+    var i = currentQuestion;
+
+    divWelcome.textContent = question[i].question;
+    answerId1.textContent = question[i].choice1;
+    answerId2.textContent = question[i].choice2;
+    answerId3.textContent = question[i].choice3;
+    answerId4.textContent = question[i].choice4;
 
 
-    if(currentQuestion === 1) {
+    if(i === 1) {
 
     answerId1.addEventListener('click', function(){
         showResult.textContent = 'Correct'
-        currentQuestion++
         timeLeft += 10
-        score++
+        score+= 10
       
         
     })
@@ -136,7 +135,7 @@ function displayQuestion(question) {
         showResult.textContent = 'Wrong'
     })
 }
-    else  if(currentQuestion === 0) {
+    else  if(i === 0) {
 
         answerId1.addEventListener('click', function(){
             showResult.textContent = 'Wrong'
@@ -144,8 +143,8 @@ function displayQuestion(question) {
         answerId2.addEventListener('click', function(){
             showResult.textContent = 'Correct'
             timeLeft += 10
-            score++
-            currentQuestion++
+            score+= 10
+         
 
         })
         answerId3.addEventListener('click', function(){
@@ -155,7 +154,7 @@ function displayQuestion(question) {
             showResult.textContent = 'Wrong'
         })
     }
-    else  if(currentQuestion === 2) {
+    else  if(i === 2) {
 
         answerId1.addEventListener('click', function(){
             showResult.textContent = 'Wrong'
@@ -165,15 +164,14 @@ function displayQuestion(question) {
         })
         answerId3.addEventListener('click', function(){
             showResult.textContent = 'Correct'
-            score++
+            score+= 10
             timeLeft += 10
-            currentQuestion++
             
         })
         answerId4.addEventListener('click', function(){
             showResult.textContent = 'Wrong'
         })
-    } else  if(currentQuestion === 3) {
+    } else  if(i === 3) {
 
         answerId1.addEventListener('click', function(){
             showResult.textContent = 'Wrong'
@@ -187,17 +185,15 @@ function displayQuestion(question) {
         answerId4.addEventListener('click', function(){
             
             showResult.textContent = 'Correct'
-            score++
+            score+= 10
             timeLeft += 10
-            currentQuestion++
         })
-    } else  if(currentQuestion === 4) {
+    } else  if(i === 4) {
 
         answerId1.addEventListener('click', function(){
             showResult.textContent = 'Correct'
             timeLeft += 10
-            score++
-            currentQuestion++
+            score+= 10
             
           
         })
@@ -213,7 +209,7 @@ function displayQuestion(question) {
             showResult.textContent = 'Wrong'
         })
     }
-    else  if(currentQuestion === 5) {
+    else  if(i === 5) {
 
         answerId1.addEventListener('click', function(){
             showResult.textContent = 'Wrong'
@@ -223,21 +219,19 @@ function displayQuestion(question) {
         })
         answerId3.addEventListener('click', function(){
             showResult.textContent = 'Correct'
-            score++
+            score+= 10
             timeLeft += 10
-            currentQuestion++
             
         })
         answerId4.addEventListener('click', function(){
             showResult.textContent = 'Wrong'
         })
-    }  else  if(currentQuestion === 6) {
+    }  else  if(i === 6) {
 
         answerId1.addEventListener('click', function(){
             showResult.textContent = 'Correct'
             timeLeft += 10
-            score++
-            currentQuestion++
+            score+= 10
             
           
         })
@@ -253,7 +247,7 @@ function displayQuestion(question) {
             showResult.textContent = 'Wrong'
         })
     }
-    else  if(currentQuestion === 7) {
+    else  if(i === 7) {
 
         answerId1.addEventListener('click', function(){
             showResult.textContent = 'Wrong'
@@ -268,13 +262,13 @@ function displayQuestion(question) {
             showResult.textContent = 'Correct'
             timeLeft += 10
             score++
-            currentQuestion++
             
         })
         answerId4.addEventListener('click', function(){
             showResult.textContent = 'Wrong'
         })
     }
+   
 }
 
 //TIMER
@@ -288,8 +282,9 @@ function setTimer() {
 
         if(timeLeft === 0) {
             clearInterval(timer);
-            main.setAttribute('style','display:block; font-size: 150%;font-weight: 700; text-align:center')
-         main.textContent = 'GAME OVER'
+        main.setAttribute('style','display:block; font-size: 150%;font-weight: 700; text-align:center; height: 200px;')
+        main.textContent = 'GAME OVER\n Your Score: '  + score
+       
         }
 
 
@@ -297,8 +292,8 @@ function setTimer() {
 
 }
 
-function start() {
-    displayQuestion(questionObj)
+function start() { //SECOND 
+    displayQuestion(questionObj) 
     setTimer()
     questionClass.setAttribute('style','display: flex;')
    
@@ -307,7 +302,7 @@ function start() {
 
 
 
-btnStart.addEventListener('click', start)
+btnStart.addEventListener('click', start) //START GAME
 
     
 
