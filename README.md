@@ -14,6 +14,6 @@
                                                                                 Answer each question as quickly
                                                                                  as you can... Goodluck!
                                                                                  
-                                                                                 
+         Screenshot"                                                                
         ![2022-11-17](https://user-images.githubusercontent.com/110507887/202500759-bdc6667b-a514-4a03-a3cd-078aea9b23f4.png)
 
