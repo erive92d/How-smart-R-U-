@@ -9,11 +9,11 @@
                                                                                     How smart R U?
                                                                             https://erive92d.github.io/How-smart-R-U-/
                                                                             
-                                                                            ScreenShot: 
-                                                                            ![2022-11-17](https://user-images.githubusercontent.com/110507887/202499081-8427e883-1579-48bc-94fb-bea021b8abcc.png)                                
+                                                                          
                                                                                   The RULES are simple
                                                                                 Answer each question as quickly
                                                                                  as you can... Goodluck!
                                                                                  
                                                                                  
-                                                                                
+        ![2022-11-17](https://user-images.githubusercontent.com/110507887/202500759-bdc6667b-a514-4a03-a3cd-078aea9b23f4.png)
+
