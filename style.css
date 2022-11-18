@@ -39,7 +39,7 @@ a {
 .answers {
     list-style: none;
 }
-.question {
+.question-container{
     display: flex;
     justify-content: center;
     align-items: center;

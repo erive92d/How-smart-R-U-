@@ -3,14 +3,15 @@ var viewScore = document.getElementById('view-score');
 var divWelcome = document.querySelector('.welcome');
 var btnStart = document.getElementById('start-button')
 var answerClass = document.querySelectorAll('.answers')
-var questionClass = document.querySelector('.question')
+var questionClass = document.getElementById('question')
+var questionCont = document.querySelector('.question-container')
 var answerId1 = document.getElementById('answer1')
 var answerId2 = document.getElementById('answer2')
 var answerId3 = document.getElementById('answer3')
 var answerId4 = document.getElementById('answer4')
-var showResult = document.createElement('h2');
+var showResult = document.getElementById('show-result')
 var main = document.getElementById('main')
-showResult.textContent = '' // correct or incorrect
+// showResult.textContent = '' // correct or incorrect
 questionClass.appendChild(showResult)
 
 var myScore = 0;
@@ -51,7 +52,7 @@ var questionObj = [{
     choice4: 'San Francisco'
 } , {
 
-    question: 'When is Christmas celebrated?',
+    question: 'When is Christmas celebrated?', 
     choice1: 'May 26',
     choice2: 'November 1',
     choice3: 'December 25',
@@ -59,7 +60,7 @@ var questionObj = [{
 
 } , {
 
-    question: 'What is HTML stand for?',
+    question: 'What is HTML stand for?', 
     choice1: 'Home Town Markup Language',
     choice2: 'Hyper Text Manly Language',
     choice3: 'Hollister Tillys Marshalls Levis',
@@ -98,178 +99,310 @@ var questionObj = [{
     choice4: 'Ron DeSantis'
 
 }
+
 ]
-var currentQuestion = Math.floor(Math.random() * questionObj.length) //USED FOR INDEX
+// var currentQuestion = Math.floor(Math.random() * questionObj.length) //USED FOR INDEX
 
-console.log(currentQuestion)
+// console.log(currentQuestion)
+function hideWelcome() {
+    divWelcome.setAttribute('style','display:none;border:3px solid black;width: 50%;margin: auto;border-radius:10px;background-color: #69B8F5')
 
-divWelcome.setAttribute('style','border:3px solid black;width: 50%;margin: auto;border-radius:10px;background-color: #69B8F5')
+}
 var timeLeft = 5;
 
-function displayQuestion(question) { //THIRD
-    var i = currentQuestion;
 
-    divWelcome.textContent = question[i].question;
-    answerId1.textContent = question[i].choice1;
-    answerId2.textContent = question[i].choice2;
-    answerId3.textContent = question[i].choice3;
-    answerId4.textContent = question[i].choice4;
+function displayQuestion1() {
 
+    questionClass.textContent = questionObj[0].question;
+    answerId1.textContent = questionObj[0].choice1;
+    answerId2.textContent = questionObj[0].choice2;
+    answerId3.textContent = questionObj[0].choice3;
+    answerId4.textContent = questionObj[0].choice4;
+    
 
-    if(i === 1) {
-
+    
     answerId1.addEventListener('click', function(){
-        showResult.textContent = 'Correct'
-        timeLeft += 10
-        score+= 10
-      
-        
+        showResult.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion2()
+
     })
     answerId2.addEventListener('click', function(){
-        showResult.textContent = 'Wrong'
+        showResult.textContent = 'Correct'
+        timeLeft += 3
+        score++
+        displayQuestion2()
     })
+
     answerId3.addEventListener('click', function(){
         showResult.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion2()
+
     })
+ 
     answerId4.addEventListener('click', function(){
         showResult.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion2()
+
     })
 }
-    else  if(i === 0) {
 
-        answerId1.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId2.addEventListener('click', function(){
-            showResult.textContent = 'Correct'
-            timeLeft += 10
-            score+= 10
-         
 
-        })
-        answerId3.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId4.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-    }
-    else  if(i === 2) {
 
-        answerId1.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId2.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId3.addEventListener('click', function(){
-            showResult.textContent = 'Correct'
-            score+= 10
-            timeLeft += 10
-            
-        })
-        answerId4.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-    } else  if(i === 3) {
+function displayQuestion2() {
 
-        answerId1.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId2.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId3.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'  
-        })
-        answerId4.addEventListener('click', function(){
-            
-            showResult.textContent = 'Correct'
-            score+= 10
-            timeLeft += 10
-        })
-    } else  if(i === 4) {
+    questionClass.textContent = questionObj[1].question;
+    answerId1.textContent = questionObj[1].choice1;
+    answerId2.textContent = questionObj[1].choice2;
+    answerId3.textContent = questionObj[1].choice3;
+    answerId4.textContent = questionObj[1].choice4;
+    
 
-        answerId1.addEventListener('click', function(){
-            showResult.textContent = 'Correct'
-            timeLeft += 10
-            score+= 10
-            
-          
-        })
-        answerId2.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-            
-        
-        })
-        answerId3.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId4.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-    }
-    else  if(i === 5) {
+    
+    answerId1.addEventListener('click', function(){
+        questionClass.textContent = 'Correct'
+        timeLeft ++
+        score++
+        displayQuestion3()
+    })
+    answerId2.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion3()
+    })
 
-        answerId1.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId2.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId3.addEventListener('click', function(){
-            showResult.textContent = 'Correct'
-            score+= 10
-            timeLeft += 10
-            
-        })
-        answerId4.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-    }  else  if(i === 6) {
-
-        answerId1.addEventListener('click', function(){
-            showResult.textContent = 'Correct'
-            timeLeft += 10
-            score+= 10
-            
-          
-        })
-        answerId2.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-            
-        
-        })
-        answerId3.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-        answerId4.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-    }
-    else  if(i === 7) {
-
-        answerId1.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-          
-        })
-        answerId2.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-            
-        
-        })
-        answerId3.addEventListener('click', function(){
-            showResult.textContent = 'Correct'
-            timeLeft += 10
-            score++
-            
-        })
-        answerId4.addEventListener('click', function(){
-            showResult.textContent = 'Wrong'
-        })
-    }
-   
+    answerId3.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion3()
+    })
+ 
+    answerId4.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion3()
+    })
+    
 }
+
+function displayQuestion3() {
+
+    questionClass.textContent = questionObj[2].question;
+    answerId1.textContent = questionObj[2].choice1;
+    answerId2.textContent = questionObj[2].choice2;
+    answerId3.textContent = questionObj[2].choice3;
+    answerId4.textContent = questionObj[2].choice4;
+    
+
+    
+    answerId1.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft--
+        displayQuestion4()
+    })
+    answerId2.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion4()
+    })
+
+    answerId3.addEventListener('click', function(){
+        questionClass.textContent = 'Correct'
+        timeLeft ++
+        score++
+        displayQuestion4()
+    })
+ 
+    answerId4.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion4()
+    })
+}
+
+
+
+function displayQuestion4() {
+
+    questionClass.textContent = questionObj[3].question;
+    answerId1.textContent = questionObj[3].choice1;
+    answerId2.textContent = questionObj[3].choice2;
+    answerId3.textContent = questionObj[3].choice3;
+    answerId4.textContent = questionObj[3].choice4;
+    
+
+    
+    answerId1.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion5()
+    })
+    answerId2.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion5()
+    })
+
+    answerId3.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion5()
+    })
+ 
+    answerId4.addEventListener('click', function(){
+        questionClass.textContent = 'Correct'
+        timeLeft += 3
+        score++
+        displayQuestion5()
+    })
+}
+
+function displayQuestion5() {
+
+    questionClass.textContent = questionObj[4].question;
+    answerId1.textContent = questionObj[4].choice1;
+    answerId2.textContent = questionObj[4].choice2;
+    answerId3.textContent = questionObj[4].choice3;
+    answerId4.textContent = questionObj[4].choice4;
+    
+
+    
+    answerId1.addEventListener('click', function(){
+        questionClass.textContent = 'Correct'
+        timeLeft += 3
+        score++
+        displayQuestion6()
+    })
+    answerId2.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion6()
+    })
+
+    answerId3.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion6()
+    })
+ 
+    answerId4.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion6()
+    })
+}
+
+function displayQuestion6() {
+
+    questionClass.textContent = questionObj[5].question;
+    answerId1.textContent = questionObj[5].choice1;
+    answerId2.textContent = questionObj[5].choice2;
+    answerId3.textContent = questionObj[5].choice3;
+    answerId4.textContent = questionObj[5].choice4;
+    
+
+    
+    answerId1.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion7()
+    })
+    answerId2.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion7()
+    })
+
+    answerId3.addEventListener('click', function(){
+        questionClass.textContent = 'Correct'
+        timeLeft += 3
+        score++
+        displayQuestion7()
+    })
+ 
+    answerId4.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion7()
+    })
+}
+
+
+function displayQuestion7() {
+
+    questionClass.textContent = questionObj[6].question;
+    answerId1.textContent = questionObj[6].choice1;
+    answerId2.textContent = questionObj[6].choice2;
+    answerId3.textContent = questionObj[6].choice3;
+    answerId4.textContent = questionObj[6].choice4;
+    
+
+    
+    answerId1.addEventListener('click', function(){
+        questionClass.textContent = 'Correct'
+        timeLeft += 3
+        score++
+        displayQuestion8()
+    })
+    answerId2.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion8()
+    })
+
+    answerId3.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion8()
+    })
+ 
+    answerId4.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion8()
+    })
+}
+
+function displayQuestion8() {
+
+    questionClass.textContent = questionObj[7].question;
+    answerId1.textContent = questionObj[7].choice1;
+    answerId2.textContent = questionObj[7].choice2;
+    answerId3.textContent = questionObj[7].choice3;
+    answerId4.textContent = questionObj[7].choice4;
+    
+
+    
+    answerId1.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion1()
+    })
+    answerId2.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion1()
+    })
+
+    answerId3.addEventListener('click', function(){
+        questionClass.textContent = 'Correct'
+        timeLeft += 3
+        score++
+        displayQuestion1()
+    })
+ 
+    answerId4.addEventListener('click', function(){
+        questionClass.textContent = 'Wrong'
+        timeLeft -= 2
+        displayQuestion1()
+    })
+}
+
+
+
+
 
 //TIMER
 
@@ -280,7 +413,7 @@ function setTimer() {
 
         timeCount.textContent = timeLeft
 
-        if(timeLeft === 0) {
+        if(timeLeft === 0 || timeLeft < 0) {
             clearInterval(timer);
         main.setAttribute('style','display:block; font-size: 150%;font-weight: 700; text-align:center; height: 200px;')
         main.textContent = 'GAME OVER\n Your Score: '  + score
@@ -293,9 +426,11 @@ function setTimer() {
 }
 
 function start() { //SECOND 
-    displayQuestion(questionObj) 
+    hideWelcome()
+    questionCont.setAttribute('style','display: flex;')
+    displayQuestion1()
     setTimer()
-    questionClass.setAttribute('style','display: flex;')
+    
    
     
 }
